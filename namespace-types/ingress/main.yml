@@ -1,0 +1,36 @@
+resource-groups:
+  default-backend:
+    vars:
+      ports:
+        http: 80
+    resources:
+      deployment:
+        path: Deployment/standard.hbs.yml?ref=master
+        vars:
+          image: gcr.io/google_containers/defaultbackend
+          tag: 1.4
+      service:
+        path: Service/standard.hbs.yml?ref=master
+  haproxy-ingress:
+    vars: # variables can be set for the whole resource group and used throughout all resources
+      ports: # both the service and deployment will use the ports.http(s).port variables
+        http: 
+          port: 80
+        https:
+          port: 443
+    dependencies:
+      default-backend: 
+    resources:
+      deployment:
+        path: Deployment/standard.hbs.yml?ref=master
+        vars:
+          image: haproxytech/kubernetes-ingress
+          tag: 1.1.0 # by default all ingress namespaces use version 1.1.0
+      service:
+        path: Service/standard-nodeport.hbs.yml?ref=master
+        vars:
+          ports: # in addition to the ports.http(s).port the service also needs a nodeport
+            http:
+              nodePort: 30080
+            https:
+              nodePort: 30443

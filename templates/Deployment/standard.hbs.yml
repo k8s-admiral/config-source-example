@@ -1,0 +1,31 @@
+{{default replicas="1"}}
+kind: Deployment
+apiVersion: apps/v1 
+metadata:
+  lables:
+    app: {{name}}
+spec:
+  replicas: {{replicas}}
+  selector:
+    app: {{name}}
+  template:
+    metadata:
+      app: {{name}}
+    spec:
+      serviceAccount: {{name}}
+      containers:
+      - name: {{name}}
+        env:
+        - name: NAMESPACE
+          value: {{namespace}}
+        {{#each env}}
+        - name: {{@key}}
+          value: {{this}}
+        {{/each}}
+        imagePullPolicy: IfNotPresent
+        image: {{image}}:{{tag}}
+        ports:
+        {{#each ports}}
+        - port: {{port}} 
+          name: {{@key}}
+        {{/each}}

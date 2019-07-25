@@ -1,0 +1,8 @@
+include:
+  haproxy-ingress: true
+resource-groups:
+  haproxy-ingress:
+    resources:
+      deployment: # name of the resource
+        vars: 
+          tag: 1.1.4 # dev specifically is on 1.1.4
