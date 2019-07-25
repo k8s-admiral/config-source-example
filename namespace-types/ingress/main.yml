@@ -14,12 +14,12 @@ resource-groups:
   haproxy-ingress:
     vars: # variables can be set for the whole resource group and used throughout all resources
       ports: # both the service and deployment will use the ports.http(s).port variables
-        http: 
+        http:
           port: 80
         https:
           port: 443
     dependencies:
-      default-backend: 
+      default-backend: 'runtime' # as opposed to 'boot'
     resources:
       deployment:
         path: Deployment/standard.hbs.yml?ref=master
