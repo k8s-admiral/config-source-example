@@ -1,5 +1,4 @@
 # Defines a map of users (same spec as kubectl) to be referenced in clusters
 users:
   local:
-***REMOVED***
-***REMOVED***
+    token: afdsasdf
