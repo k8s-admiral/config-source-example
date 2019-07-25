@@ -19,7 +19,7 @@ resource-groups:
         https:
           port: 443
     dependencies:
-      default-backend: 'runtime' # as opposed to 'boot'
+      default-backend: 'boot' # as opposed to 'runtime' this will create the default-backend before it tries to create haproxy-ingress
     resources:
       deployment:
         path: Deployment/standard.hbs.yml?ref=master
