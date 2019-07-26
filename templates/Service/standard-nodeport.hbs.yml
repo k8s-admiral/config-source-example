@@ -3,11 +3,11 @@ kind: Service
 spec:
   type: NodePort
   ports:
-  {{#each ports}}
-  - port: {{port}} 
-    targetPort: {{@key}}
-    name: {{@key}}
-    nodePort: {{nodeport}}
+  {{#each ports as | p k |}}
+  - port: {{p.port}}
+    targetPort: {{k}}
+    name: {{k}}
+    nodePort: {{p.nodeport}}
   {{/each}}
   selector:
     app: {{name}}

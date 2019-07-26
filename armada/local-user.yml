@@ -1,4 +1,5 @@
 # Defines a map of users (same spec as kubectl) to be referenced in clusters
 users:
   local:
-    token: afdsasdf
+    password: 8517eccf3c4fce20aa3b8008de333eb2
+    username: admin

@@ -5,12 +5,14 @@ metadata:
   lables:
     app: {{name}}
 spec:
-  replicas: {{replicas}}
+  replicas: 1
   selector:
-    app: {{name}}
+    matchLabels:
+      app: {{name}}
   template:
     metadata:
-      app: {{name}}
+      labels:
+        app: {{name}}
     spec:
       serviceAccount: {{name}}
       containers:
@@ -25,7 +27,7 @@ spec:
         imagePullPolicy: IfNotPresent
         image: {{image}}:{{tag}}
         ports:
-        {{#each ports}}
-        - port: {{port}} 
-          name: {{@key}}
+        {{#each ports as |p k|}}
+        - containerPort: {{p.port}}
+          name: {{k}}
         {{/each}}
