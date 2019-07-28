@@ -5,6 +5,8 @@ resource-groups:
         http:
           port: 80
     resources:
+      service-account:
+        path: ServiceAccount/standard.hbs.yml?ref=master
       deployment:
         path: Deployment/standard.hbs.yml?ref=master
         vars:
@@ -22,6 +24,8 @@ resource-groups:
     dependencies:
       default-backend: 'boot' # as opposed to 'runtime' this will create the default-backend before it tries to create haproxy-ingress
     resources:
+      service-account:
+        path: ServiceAccount/standard.hbs.yml?ref=master
       deployment:
         path: Deployment/standard.hbs.yml?ref=master
         vars:

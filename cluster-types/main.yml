@@ -8,6 +8,6 @@ resource-groups: # cluster level ResourceGroups that are available to add to inc
   haproxy-ingress: # the name of the ResourceGroup
     resources: # all of the resources included in the ResourceGroup
       cluster-role: # the name of the Resource. only used to put resources in a map the {{name}} variable comes from the ResourceGroup name
-        path: ClusterRole/haproxy.hbs.yaml?ref=master # relative paths are assumed to be from the root of the templates directory.
+        path: ClusterRole/haproxy.hbs.yml?ref=master # relative paths are assumed to be from the root of the templates directory.
       cluster-role-binding:
         path: ClusterRoleBinding/standard.hbs.yml?ref=master

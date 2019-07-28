@@ -2,7 +2,7 @@
 clusters:
   local: # the name of the cluster
     connection: # connection reflects the kubectl cluster config
-      server: 192.168.2.10:6443
+      server: https://localhost:6443
     user: local # use the local user for authentication
     type: dev/local # which cluster type config to use when creating resources in kubernetes
     ref: master # the ref to use when loading type config
