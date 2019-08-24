@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+spec:
+  ports:
+  {{#each ports as | p k |}}
+  - port: {{p.port}}
+    targetPort: {{k}}
+    name: {{k}}
+  {{/each}}
+  selector:
+    app: {{name}}

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+spec:
+  type: NodePort
+  ports:
+  {{#each ports as | p k |}}
+  - port: {{p.port}}
+    targetPort: {{k}}
+    name: {{k}}
+    nodePort: {{p.nodeport}}
+  {{/each}}
+  selector:
+    app: {{name}}
